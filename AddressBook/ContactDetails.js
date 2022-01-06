@@ -54,7 +54,7 @@ class ContactDetails{
 
     set addressName(address){
         let addressRegex = RegExp("^[A-Z0-9a-z]*$");
-        if(address.test(address)){
+        if(addressRegex.test(address)){
             this.address = address;
         }else{
             throw 'Address is incorrect!'
