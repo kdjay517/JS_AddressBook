@@ -1,3 +1,4 @@
+const promt = require('prompt-sync')({sigint:true});
 const AddressBookService = require('./AddressBookService.js');
 const UserInputOutput = require('./UserInputOutput.js')
 
@@ -16,6 +17,10 @@ while(flag){
             console.log(contactInfoList);
             break;
         case 3:
+            let fName = promt('enter the first name to edit the contact details a person: ');
+            contactInfoList = addressBookService.editContact(contactInfoList,fName);
+            break;
+        case 4:
             console.log('EXITED !!!');
             flag = false;
             break;
