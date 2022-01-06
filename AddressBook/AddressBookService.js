@@ -1,19 +1,19 @@
 const ContactDetails = require("./ContactDetails.js");
-const promt = require('prompt-sync')({sigint:true});
+const prompt = require('prompt-sync')({sigint:true});
 
 class AddressBookService{
     contactInfoList = new Array();
     insert(contactInfoList){
         try {
             let contactInfo = new ContactDetails();
-            contactInfo.fName = promt('enter first name:');
-            contactInfo.lName = promt('enter last name:');
-            contactInfo.addressName = promt('enter address:');
-            contactInfo.cityName = promt('enter city:');
-            contactInfo.stateName = promt('enter state:');
-            contactInfo.zipNumber = promt('enter zipcode:');
-            contactInfo.phoneNo = promt('enter phonenumber:');
-            contactInfo.emailID = promt('enter email:');
+            contactInfo.fName = prompt('enter first name:');
+            contactInfo.lName = prompt('enter last name:');
+            contactInfo.addressName = prompt('enter address:');
+            contactInfo.cityName = prompt('enter city:');
+            contactInfo.stateName = prompt('enter state:');
+            contactInfo.zipNumber = prompt('enter zipcode:');
+            contactInfo.phoneNo = prompt('enter phonenumber:');
+            contactInfo.emailID = prompt('enter email:');
             
             contactInfoList.push(contactInfo);
 
@@ -21,6 +21,57 @@ class AddressBookService{
         } catch (e) {
             console.error(e);
         }
+    }
+
+    editContact(contactInfoList, fname) {
+        contactInfoList.forEach(element => {
+            if ((element.fName == fname) == true) {
+                console.log("Press 1 to edit Last Name");
+                console.log("Press 2 to edit Address");
+                console.log("Press 3 to edit City")
+                console.log("Press 4 to edit State");
+                console.log("Press 5 to edit Zip");
+                console.log("Press 6 to edit Phone Number");
+                console.log("Press 7 to edit Email");
+                let option = parseInt(prompt("Enter your choice : "));
+                let contactInfo = new ContactDetails();
+
+                switch (option) {
+                    case 1:
+                        contactInfo.lName = prompt("Enter Last Name : ");
+                        element.lName = contactInfo.lName;
+                        break;
+                    case 2:
+                        contactInfo.addressName = prompt("Enter Address : ");
+                        element.addressName = contactInfo.addressName;
+                        break;
+                    case 3:
+                        contactInfo.cityName = prompt("Enter City : ");
+                        element.cityName = contactInfo.cityName;
+                        break;
+                    case 4:
+                        contactInfo.stateName = prompt("Enter State : ");
+                        element.stateName = contactInfo.stateName;
+                        break;
+                    case 5:
+                        contactInfo.zipNumber = prompt("Enter Zip : ");
+                        element.zipNumber = contactInfo.zipNumber;
+                        break;
+                    case 6:
+                        contactInfo.phoneNo = prompt("Enter Phone Number : ");
+                        element.phoneNo = contactInfo.phoneNo;
+                        break;
+                    case 7:
+                        contactInfo.emailID = prompt("Enter Email : ");
+                        element.emailID = contactInfo.emailID;
+                        break;
+                    default:
+                        console.log("You have entered invalid input!");
+                        break;
+                }
+            }
+        })
+        return contactInfoList;
     }
 }
 module.exports = AddressBookService;
