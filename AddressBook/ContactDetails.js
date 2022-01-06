@@ -9,79 +9,127 @@ class ContactDetails{
     phoneNumber;
     email;
 
-    constructor(firstName,lastName,address,city,state,zipcode,phoneNumber,email){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    constructor(...params){
+        this.firstName = params[0];
+        this.lastName = params[1];
+        this.address = params[2];
+        this.city = params[3];
+        this.state = params[4];
+        this.zipcode = params[5];
+        this.phoneNumber = params[6];
+        this.email = params[7];
     }
 
-    get firstName(){
+    get fName(){
         return this.firstName;
     }
 
-    set firstName(firstName){
-        this.firstName = firstName;
+    set fName(firstName){
+        let fnameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+        if(fnameRegex.test(firstName)){
+            this.firstName = firstName;
+        }else{
+            throw 'Name is incorrect!'
+        }
+        
     }
 
-    get lastName(){
+    get lName(){
         return this.lastName;
     }
 
-    set lastName(lastName){
-        this.lastName = lastName;
+    set lName(lastName){
+        let lnameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+        if(lnameRegex.test(lastName)){
+            this.lastName = lastName;
+        }else{
+            throw 'Name is incorrect!'
+        }
+        
     }
 
-    get address(){
+    get addressName(){
         return this.address;
     }
 
-    set addressa(address){
-        this.address = address;
+    set addressName(address){
+        let addressRegex = RegExp("^[A-Z0-9a-z]*$");
+        if(address.test(address)){
+            this.address = address;
+        }else{
+            throw 'Address is incorrect!'
+        }
+        
     }
 
-    get city(){
+    get cityName(){
         return this.city;
     }
 
-    set city(city){
-        this.city = city;
+    set cityName(city){
+        let cityRegex = RegExp('^[A-Za-z]*$');
+        if(cityRegex.test(city)){
+            this.city = city;
+        }else{
+            throw 'City is incorrect!'
+        }
+        
     }
 
-    get state(){
+    get stateName(){
         return this.state;
     }
 
-    set state(state){
-        this.state = state;
+    set stateName(state){
+        let stateRegex = RegExp('^[A-Za-z]*$');
+        if(stateRegex.test(state)){
+            this.state = state;
+        }else{
+            throw 'State is incorrect!'
+        }
+        
     }
 
-    get zipcode(){
+    get zipNumber(){
         return this.zipcode;
     }
 
-    set zipcode(zipcode){
-        this.zipcode = zipcode;
+    set zipNumber(zipcode){
+        let zipRegex = RegExp("^[1-9]{6}$");
+        if(zipRegex.test(zipcode)){
+            this.zipcode = zipcode;
+        }else{
+            throw 'zipcode is incorrect!'
+        }
+        
     }
 
-    get phoneNumber(){
+    get phoneNo(){
         return this.phoneNumber;
     }
 
-    set phoneNumber(phoneNumber){
-        this.phoneNumber = phoneNumber;
+    set phoneNo(phoneNumber){
+        let phoneRegex = RegExp("^([+])?([91]{2})?[\\s]?[6-9][0-9]{9}$");
+        if(phoneRegex.test(phoneNumber)){
+            this.phoneNumber = phoneNumber;
+        }else{
+            throw 'Phone Number is incorrect!'
+        }
+        
     }
     
-    get email(){
+    get emailID(){
         return this.email;
     }
 
-    set email(email){
-        this.email = email;
+    set emailID(email){
+        let emailRegex = RegExp("^[A-Za-z0-9]+([.+-_][0-9a-zA-Z])*[@]([0-9a-zA-Z])+[.][a-zA-z]{2,3}([.][a-zA-z]{2,3})?$");
+        if(emailRegex.test(email)){
+            this.email = email;
+        }else{
+            throw 'email is incorrect!'
+        }
+        
     }
 
     toString(){
