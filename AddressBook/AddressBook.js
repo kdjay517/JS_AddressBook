@@ -21,6 +21,10 @@ while(flag){
             contactInfoList = addressBookService.editContact(contactInfoList,fName);
             break;
         case 4:
+            let dName = promt('enter the first name to delete the contact details a person: ');
+            contactInfoList = addressBookService.deleteContact(contactInfoList,dName);
+            break;
+        case 4:
             console.log('EXITED !!!');
             flag = false;
             break;

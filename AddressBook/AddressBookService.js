@@ -28,7 +28,7 @@ class AddressBookService{
             if ((element.fName == fname) == true) {
                 console.log("Press 1 to edit Last Name");
                 console.log("Press 2 to edit Address");
-                console.log("Press 3 to edit City")
+                console.log("Press 3 to edit City");
                 console.log("Press 4 to edit State");
                 console.log("Press 5 to edit Zip");
                 console.log("Press 6 to edit Phone Number");
@@ -69,9 +69,25 @@ class AddressBookService{
                         console.log("You have entered invalid input!");
                         break;
                 }
+            }else{
+                console.log('invalid contact details !!')
             }
         })
         return contactInfoList;
+    }
+
+    deleteContact(contactInfoList,dName){
+        contactInfoList.forEach(element =>{
+            if(element.fName == dName){
+                let index = contactInfoList.index(dName);
+                contactInfoList.splice(index,1);
+            }else{
+                console.log('invalid contact details !!')
+            }
+            
+        })
+        return contactInfoList;
+            
     }
 }
 module.exports = AddressBookService;
