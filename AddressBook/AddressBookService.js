@@ -3,7 +3,9 @@ const prompt = require('prompt-sync')({sigint:true});
 
 class AddressBookService{
     contactInfoList = new Array();
+    
     insert(contactInfoList){
+        let found = false;
         try {
             let contactInfo = new ContactDetails();
             contactInfo.fName = prompt('enter first name:');
@@ -14,9 +16,25 @@ class AddressBookService{
             contactInfo.zipNumber = prompt('enter zipcode:');
             contactInfo.phoneNo = prompt('enter phonenumber:');
             contactInfo.emailID = prompt('enter email:');
-            
-            contactInfoList.push(contactInfo);
 
+            if (contactInfoList.length < 0) {
+                contactInfoList.push(contactInfo);
+            } else if (contactInfoList.length >= 0) {
+                contactInfoList.forEach(element => {
+                    if ((element.fName === contactInfo.fName) == true) {
+                        found = true;
+                        return;
+                    }
+                });
+                if (found == true) {
+                    console.log();
+                    console.log("Duplicate entry exists!");
+                    console.log();
+                } else {
+                    contactInfoList.push(contactInfo);
+                }
+            }
+        
             return contactInfoList;
         } catch (e) {
             console.error(e);
