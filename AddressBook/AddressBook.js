@@ -33,6 +33,10 @@ while(flag){
             console.log();
             break;
         case 7:
+            addressBookService.sortContact(contactInfoList);
+            console.log();
+            break;
+        case 8:
             console.log('EXITED !!!');
             flag = false;
             break;
