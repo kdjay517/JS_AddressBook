@@ -141,6 +141,9 @@ class AddressBookService{
 
     sortContact(contactInfoList){
         console.log('press 1 - to sort the address book by first name');
+        console.log("Press 2 - to sort the Address Book by City");
+        console.log("Press 3 - to sort the Address Book by State");
+        console.log("Press 4 - to sort the Address Book by Zip");
         let userChoice = parseInt(prompt('enter your choice: '));
         switch(userChoice){
             case 1:
@@ -149,6 +152,33 @@ class AddressBookService{
                         return 0;
                     }
                     return a.fName < b.fName ? -1 : 1;
+                })
+                console.log(contactInfoList);
+                break;
+            case 2:
+                contactInfoList.sort((a ,b) =>{
+                    if(a == b){
+                        return 0;
+                    }
+                    return a.cityName < b.cityName ? -1 : 1;
+                })
+                console.log(contactInfoList);
+                break;
+            case 3:
+                contactInfoList.sort((a ,b) =>{
+                    if(a == b){
+                        return 0;
+                    }
+                    return a.stateName < b.stateName ? -1 : 1;
+                })
+                console.log(contactInfoList);
+                break;
+            case 4:
+                contactInfoList.sort((a ,b) =>{
+                    if(a == b){
+                        return 0;
+                    }
+                    return a.zipNumber < b.zipNumber ? -1 : 1;
                 })
                 console.log(contactInfoList);
                 break;
