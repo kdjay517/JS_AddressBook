@@ -110,6 +110,7 @@ class AddressBookService{
     searchContact(contactInfoList){
         console.log('press 1 - to search by city');
         console.log('press 2 - to serach by state');
+        let count = 0;
         let userChoice = parseInt(prompt('enter your choice: '))
         switch(userChoice){
             case 1:
@@ -117,16 +118,20 @@ class AddressBookService{
                 contactInfoList.forEach(value =>{
                     if((value.cityName == city) == true){
                         console.log(value);
+                        count++;
                     }
                 });
+                console.log('total persons from the same city are: ' + count);
                 break;
             case 2:
                 let state = prompt('enter state name: ');
                 contactInfoList.forEach(value =>{
                     if((value.stateName == state) == true){
                         console.log(value);
+                        count++;
                     }
                 });
+                console.log('total persons from the same state are: ' +count);
                 break;
             default:
                 console.log('choose correct option');
