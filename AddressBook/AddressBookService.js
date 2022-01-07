@@ -104,8 +104,34 @@ class AddressBookService{
             }
             
         })
-        return contactInfoList;
-            
+        return contactInfoList;     
+    }
+
+    searchContact(contactInfoList){
+        console.log('press 1 - to search by city');
+        console.log('press 2 - to serach by state');
+        let userChoice = parseInt(prompt('enter your choice: '))
+        switch(userChoice){
+            case 1:
+                let city = prompt('enter city name: ');
+                contactInfoList.forEach(value =>{
+                    if((value.cityName == city) == true){
+                        console.log(value);
+                    }
+                });
+                break;
+            case 2:
+                let state = prompt('enter state name: ');
+                contactInfoList.forEach(value =>{
+                    if((value.stateName == state) == true){
+                        console.log(value);
+                    }
+                });
+                break;
+            default:
+                console.log('choose correct option');
+                break;
+        }
     }
 }
 module.exports = AddressBookService;
